@@ -2,7 +2,7 @@
 @use "../../style/variables/spacing" as space;
 @use "../../style/variables/typography" as typo;
 @use "../../style/mixins/mixins" as mix;
-@use "../../style/placeholders/base";
+@use "../../style/placeholders/buttons" as btn;
 
 .header {
   background: light-dark(color.$bg-color-light, color.$bg-color-dark);
@@ -39,8 +39,7 @@
   }
 
   &__login-btn {
-    @extend .btn;
-    @extend .btn--primary;
+    @extend %btn--primary;
     margin: 0;
   }
 }

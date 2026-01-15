@@ -1,36 +1,59 @@
-@use "../variables/color" as var;
+@use "../variables/color" as color;
+@use "../variables/spacing" as space;
 
-%button1 {
-    width: 100%;
-    height: fit-content;
-    padding-top: 1.125rem;
-    padding-bottom: 1.125rem;
-    border-radius: 40px;
-    border: 1px solid var(--boxborder);
-    text-decoration: none;
-    color: light-dark(var(--text-l), var(--fonts-d));
-    text-align: center;
+// Base button styles
+%btn {
+  display: inline-block;
+  padding: space.$spacing-sm space.$spacing-md;
+  border: none;
+  border-radius: space.$radius-md;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
-%button2 {
-    width: 100%;
-    height: fit-content;
-    padding-top: 1.125rem;
-    padding-bottom: 1.125rem;
-    border-radius: 40px;
-    border: 1px solid var(--highlight);
-    box-shadow:  0 4px 8px 0 var(--highlight);
-    background:var(--highlight);
-    color: var(--bg-l);
-    text-decoration: none;
-    text-align: center;
+
+// Primary button variant
+%btn--primary {
+  @extend %btn;
+  background: color.$highlight-green-color;
+  color: white;
+
+  &:hover {
+    background: darken(color.$highlight-green-color, 10%);
+    transform: translateY(-2px);
+  }
 }
-%button3 {
-    width: 90%;
-    height: fit-content;
-    padding-top: 1.125rem;
-    padding-bottom: 1.125rem;
-    border-radius: 40px;
-    border: 1px solid var(--highlight);
-    text-decoration: none;
-    color: var(--highlight);
+
+// Secondary button variant
+%btn--secondary {
+  @extend %btn;
+  background: light-dark(#f0f0f0, #333);
+  color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+  border: 1px solid light-dark(#ddd, #555);
+
+  &:hover {
+    background: light-dark(#e0e0e0, #444);
+    transform: translateY(-2px);
+  }
+}
+
+// Small button variant
+%btn--small {
+  @extend %btn;
+  padding: space.$spacing-xs space.$spacing-sm;
+  font-size: 0.875rem;
 }

@@ -39,31 +39,20 @@ main {
 
 // Global button styles
 .btn {
-  @extend %button;
+  @extend %btn;
 
   &--primary {
-    background: color.$highlight-green-color;
-    color: white;
-
-    &:hover {
-      background: darken(color.$highlight-green-color, 10%);
-    }
+    @extend %btn--primary;
   }
 
   &--secondary {
-    background: light-dark(#f0f0f0, #333);
-    color: light-dark(color.$text-color-light, color.$fonts-color-dark);
-    border: 1px solid light-dark(#ddd, #555);
-
-    &:hover {
-      background: light-dark(#e0e0e0, #444);
-    }
+    @extend %btn--secondary;
   }
 
   &--small {
-    padding: spacing.$spacing-xs spacing.$spacing-sm;
-    font-size: 0.875rem;
+    @extend %btn--small;
   }
+}
 }
 
 // Global link styles
