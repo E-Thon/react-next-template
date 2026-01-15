@@ -1,20 +1,111 @@
-@use "../../style/variables/color" as var;
+@use "../../style/variables/color" as color;
+@use "../../style/variables/spacing" as space;
+@use "../../style/variables/typography" as typo;
+@use "../../style/mixins/mixins" as mix;
 @use "../../style/placeholders/base";
-@use "../../style/placeholders/img";
 
-.headerElm {
-  @extend %base;
-  @extend %img;
-  padding: 1rem;
-  a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+.header {
+  background: light-dark(color.$bg-color-light, color.$bg-color-dark);
+  border-bottom: 1px solid light-dark(#e0e0e0, #333);
+  padding: space.$spacing-md 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 300ms ease-in-out;
+
+  &__container {
+    @include mix.container;
+    @include mix.flex-between;
+    gap: space.$spacing-lg;
+    flex-wrap: wrap;
+  }
+
+  &__logo {
+    font-size: typo.$h2-size;
+    font-weight: typo.$h2-weight;
+    color: color.$highlight-green-color;
     text-decoration: none;
-    img {
-      width: 1.1875rem;
-      height: 1.686rem;
+    white-space: nowrap;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__user-menu {
+    @include mix.flex-center;
+    gap: space.$spacing-md;
+  }
+
+  &__login-btn {
+    @extend .btn;
+    @extend .btn--primary;
+    margin: 0;
+  }
+}
+
+.user-dropdown {
+  position: relative;
+
+  &__toggle {
+    @include mix.button-reset;
+    color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+    font-weight: 600;
+    padding: space.$spacing-sm;
+    cursor: pointer;
+    border-radius: space.$radius-md;
+    transition: background 150ms ease-in-out;
+
+    &:hover {
+      background: light-dark(#f5f5f5, #333);
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: light-dark(color.$bg-color-light, #2a2a2a);
+    border: 1px solid light-dark(#e0e0e0, #333);
+    border-radius: space.$radius-md;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 180px;
+    margin-top: space.$spacing-sm;
+    overflow: hidden;
+    z-index: 10;
+
+    a,
+    button {
+      display: block;
+      width: 100%;
+      padding: space.$spacing-sm space.$spacing-md;
+      text-align: left;
+      border: none;
+      background: none;
+      color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+      cursor: pointer;
+      transition: background 150ms ease-in-out;
+      font: inherit;
+
+      &:hover {
+        background: light-dark(#f5f5f5, #333);
+      }
+    }
+  }
+
+  &__logout {
+    @include mix.button-reset;
+    display: block;
+    width: 100%;
+    padding: space.$spacing-sm space.$spacing-md;
+    text-align: left;
+    color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+    transition: background 150ms ease-in-out;
+    border-radius: space.$radius-md;
+
+    &:hover {
+      background: light-dark(#f5f5f5, #333);
     }
   }
 }

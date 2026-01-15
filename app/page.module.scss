@@ -1,0 +1,51 @@
+@use "../style/variables/color" as color;
+@use "../style/variables/spacing" as space;
+@use "../style/variables/typography" as typo;
+@use "../style/mixins/mixins" as mix;
+
+.hero {
+  text-align: center;
+  padding: space.$spacing-3xl space.$spacing-lg;
+  background: linear-gradient(135deg, light-dark(#f5f5f5, #2a2a2a), light-dark(#ffffff, #1f1f1f));
+  border-radius: space.$radius-md;
+  margin-bottom: space.$spacing-3xl;
+
+  h1 {
+    margin-bottom: space.$spacing-md;
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+    color: light-dark(color.$navigations-color-light, color.$version-color-dark);
+  }
+}
+
+.featured {
+  h2 {
+    margin-bottom: space.$spacing-xl;
+  }
+}
+
+.featured-items {
+  @include mix.responsive-grid;
+  margin-bottom: space.$spacing-2xl;
+}
+
+.featured__cta {
+  text-align: center;
+  margin-top: space.$spacing-2xl;
+
+  a {
+    @extend .btn;
+    @extend .btn--primary;
+    display: inline-block;
+  }
+}
+
+// Dark mode specific styling
+@media (prefers-color-scheme: dark) {
+  .hero {
+    background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+  }
+}

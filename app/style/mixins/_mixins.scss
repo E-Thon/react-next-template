@@ -1,0 +1,79 @@
+@use "../variables/spacing" as space;
+@use "../variables/color" as color;
+
+// Flexbox centering
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Flex between (space-between)
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Flex column
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+// Grid
+@mixin grid($columns: 1, $gap: space.$spacing-md) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Responsive grid
+@mixin responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space.$spacing-md;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Text truncate
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Transition
+@mixin transition($property: all, $duration: space.$transition-base) {
+  transition: $property $duration;
+}
+
+// Focus state
+@mixin focus-state {
+  outline: 2px solid color.$highlight-green-color;
+  outline-offset: 2px;
+}
+
+// Button reset
+@mixin button-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+// Container
+@mixin container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 space.$spacing-md;
+}

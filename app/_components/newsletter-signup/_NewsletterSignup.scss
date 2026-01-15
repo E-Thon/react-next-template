@@ -1,0 +1,63 @@
+@use "../../style/variables/color" as color;
+@use "../../style/variables/spacing" as space;
+@use "../../style/mixins/mixins" as mix;
+
+.newsletter {
+  h3 {
+    margin: 0 0 space.$spacing-sm 0;
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 0 0 space.$spacing-md 0;
+    font-size: 0.875rem;
+    color: light-dark(color.$navigations-color-light, color.$version-color-dark);
+  }
+
+  form {
+    display: flex;
+    gap: space.$spacing-sm;
+    flex-wrap: wrap;
+  }
+
+  input {
+    flex: 1;
+    min-width: 150px;
+    padding: space.$spacing-sm space.$spacing-md;
+    border: 1px solid light-dark(#ddd, #444);
+    border-radius: space.$radius-md;
+    background: light-dark(white, #2a2a2a);
+    color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+    font-size: 0.875rem;
+
+    &::placeholder {
+      color: light-dark(#999, #888);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: color.$highlight-green-color;
+    }
+  }
+
+  button {
+    padding: space.$spacing-sm space.$spacing-lg;
+    background: color.$highlight-green-color;
+    color: white;
+    border: none;
+    border-radius: space.$radius-md;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 150ms ease-in-out;
+
+    &:hover {
+      background: darken(color.$highlight-green-color, 10%);
+    }
+  }
+
+  &__message {
+    margin-top: space.$spacing-sm;
+    color: color.$highlight-green-color;
+    font-size: 0.875rem;
+  }
+}

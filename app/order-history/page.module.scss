@@ -1,0 +1,82 @@
+@use "../style/variables/color" as color;
+@use "../style/variables/spacing" as space;
+@use "../style/mixins/mixins" as mix;
+
+.orders {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space.$spacing-lg;
+  margin-top: space.$spacing-xl;
+}
+
+.order-card {
+  padding: space.$spacing-lg;
+  background: light-dark(white, #2a2a2a);
+  border: 1px solid light-dark(#e0e0e0, #333);
+  border-radius: space.$radius-md;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: space.$spacing-md;
+    padding-bottom: space.$spacing-md;
+    border-bottom: 1px solid light-dark(#e0e0e0, #333);
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  &__date {
+    margin: 0;
+    font-size: 0.875rem;
+    color: light-dark(color.$navigations-color-light, color.$version-color-dark);
+  }
+
+  &__items {
+    margin-bottom: space.$spacing-md;
+
+    h4 {
+      margin: 0 0 space.$spacing-sm 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: space.$spacing-sm 0;
+        border-bottom: 1px solid light-dark(#e0e0e0, #333);
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  &__total {
+    padding-top: space.$spacing-md;
+    border-top: 2px solid light-dark(#e0e0e0, #333);
+    font-size: 1.125rem;
+    color: color.$highlight-green-color;
+  }
+}
+
+.empty-orders {
+  text-align: center;
+  padding: space.$spacing-3xl space.$spacing-lg;
+
+  p {
+    margin-bottom: space.$spacing-lg;
+    font-size: 1.125rem;
+  }
+
+  a {
+    @extend .btn;
+    @extend .btn--primary;
+  }
+}

@@ -1,0 +1,31 @@
+@use "../../style/variables/color" as color;
+@use "../../style/variables/spacing" as space;
+@use "../../style/mixins/mixins" as mix;
+
+.error-boundary {
+  @include mix.flex-col;
+  @include mix.flex-center;
+  text-align: center;
+  padding: space.$spacing-3xl space.$spacing-lg;
+  background: light-dark(#fff3cd, #5f4a2f);
+  border: 1px solid light-dark(#ffc107, #8b6f47);
+  border-radius: space.$radius-md;
+  gap: space.$spacing-lg;
+
+  h1 {
+    color: light-dark(#856404, #ffe082);
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    color: light-dark(#856404, #ffe082);
+  }
+
+  &__actions {
+    display: flex;
+    gap: space.$spacing-md;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

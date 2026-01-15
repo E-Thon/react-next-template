@@ -1,10 +1,50 @@
-nav {
-    display: flex;
-    padding: 1rem 2rem;
-    background-color: #000;
+@use "../../style/variables/color" as color;
+@use "../../style/variables/spacing" as space;
+@use "../../style/variables/typography" as typo;
+@use "../../style/mixins/mixins" as mix;
 
-    & a.active {
-        font-weight: bold;
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: space.$spacing-lg;
+  flex: 1;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: space.$spacing-xl;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+
+    li {
+      a {
+        color: light-dark(color.$text-color-light, color.$fonts-color-dark);
         text-decoration: none;
+        font-weight: 500;
+        transition: color 150ms ease-in-out;
+        position: relative;
+        padding-bottom: space.$spacing-xs;
+
+        &:hover {
+          color: color.$highlight-green-color;
+
+          &::after {
+            width: 100%;
+          }
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: color.$highlight-green-color;
+          transition: width 150ms ease-in-out;
+        }
+      }
     }
+  }
 }

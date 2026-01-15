@@ -1,0 +1,157 @@
+@use "../style/variables/color" as color;
+@use "../style/variables/spacing" as space;
+@use "../style/variables/typography" as typo;
+@use "../style/mixins/mixins" as mix;
+
+.back-link {
+  display: inline-block;
+  margin-bottom: space.$spacing-lg;
+  color: color.$highlight-green-color;
+  text-decoration: none;
+  transition: opacity 150ms ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.product-details {
+  @include mix.grid(2, space.$spacing-2xl);
+  margin-top: space.$spacing-xl;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    background: light-dark(#f5f5f5, #2a2a2a);
+    border-radius: space.$radius-md;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: space.$spacing-md;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    gap: space.$spacing-md;
+    font-size: 0.875rem;
+
+    .rating {
+      font-weight: 700;
+      color: color.$highlight-green-color;
+    }
+
+    .reviews {
+      color: light-dark(color.$navigations-color-light, color.$version-color-dark);
+    }
+  }
+
+  &__description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  &__details {
+    padding: space.$spacing-lg;
+    background: light-dark(#f9f9f9, #2a2a2a);
+    border-radius: space.$radius-md;
+    border-left: 4px solid color.$highlight-green-color;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: space.$spacing-lg;
+
+    .price {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: color.$highlight-green-color;
+    }
+
+    .in-stock {
+      color: #28a745;
+      font-weight: 600;
+    }
+
+    .out-of-stock {
+      color: #dc3545;
+      font-weight: 600;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: space.$spacing-md;
+    flex-wrap: wrap;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+  }
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: space.$spacing-md;
+
+  label {
+    margin: 0;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  input {
+    width: 80px;
+    padding: space.$spacing-sm;
+    border: 1px solid light-dark(#ddd, #444);
+    border-radius: space.$radius-md;
+    background: light-dark(white, #2a2a2a);
+    color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+
+    &:focus {
+      outline: none;
+      border-color: color.$highlight-green-color;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+button.btn {
+  flex: 1;
+  min-width: 150px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.favorited {
+    background: color.$highlight-green-color;
+  }
+}

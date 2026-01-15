@@ -1,0 +1,8 @@
+@use "../style/variables/color" as color;
+@use "../style/variables/spacing" as space;
+@use "../style/mixins/mixins" as mix;
+
+.products-grid {
+  @include mix.responsive-grid;
+  margin-top: space.$spacing-xl;
+}

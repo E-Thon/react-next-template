@@ -1,0 +1,23 @@
+@use "../style/variables/color" as color;
+@use "../style/variables/spacing" as space;
+@use "../style/mixins/mixins" as mix;
+
+.favorites-grid {
+  @include mix.responsive-grid;
+  margin-top: space.$spacing-xl;
+}
+
+.empty-favorites {
+  text-align: center;
+  padding: space.$spacing-3xl space.$spacing-lg;
+
+  p {
+    margin-bottom: space.$spacing-lg;
+    font-size: 1.125rem;
+  }
+
+  a {
+    @extend .btn;
+    @extend .btn--primary;
+  }
+}

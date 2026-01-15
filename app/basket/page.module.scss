@@ -1,0 +1,78 @@
+@use "../style/variables/color" as color;
+@use "../style/variables/spacing" as space;
+@use "../style/mixins/mixins" as mix;
+
+.basket {
+  margin-top: space.$spacing-xl;
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: light-dark(white, #2a2a2a);
+    border-radius: space.$radius-md;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    thead {
+      background: light-dark(#f5f5f5, #333);
+      border-bottom: 2px solid light-dark(#e0e0e0, #555);
+    }
+
+    th,
+    td {
+      padding: space.$spacing-md;
+      text-align: left;
+      border-bottom: 1px solid light-dark(#e0e0e0, #333);
+    }
+
+    th {
+      font-weight: 700;
+      color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+    }
+
+    button {
+      @extend .btn;
+      @extend .btn--secondary;
+      padding: space.$spacing-xs space.$spacing-md;
+      font-size: 0.875rem;
+    }
+  }
+
+  &__summary {
+    margin-top: space.$spacing-2xl;
+    padding: space.$spacing-lg;
+    background: light-dark(#f9f9f9, #2a2a2a);
+    border-radius: space.$radius-md;
+    border-left: 4px solid color.$highlight-green-color;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: color.$highlight-green-color;
+      margin: space.$spacing-lg 0;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.empty-basket {
+  text-align: center;
+  padding: space.$spacing-3xl space.$spacing-lg;
+
+  p {
+    margin-bottom: space.$spacing-lg;
+    font-size: 1.125rem;
+  }
+
+  a {
+    @extend .btn;
+    @extend .btn--primary;
+  }
+}

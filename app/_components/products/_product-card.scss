@@ -1,14 +1,13 @@
+@use "../../style/variables/color" as color;
+@use "../../style/variables/spacing" as space;
+@use "../../style/mixins/mixins" as mix;
+@use "../../style/placeholders/components";
+
 .product-card {
+  @extend %card;
   display: flex;
   flex-direction: column;
-  border: 1px solid #ddd;
-  border-radius: 8px;
   overflow: hidden;
-  transition: box-shadow 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
 
   &__image {
     width: 100%;
@@ -17,59 +16,67 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f5f5f5;
+    background: light-dark(#f5f5f5, #2a2a2a);
+    border-bottom: 1px solid light-dark(#e0e0e0, #333);
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 300ms ease-in-out;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
     }
   }
 
   &__content {
-    padding: 16px;
+    padding: space.$spacing-md;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-
-    h3 {
-      margin: 0 0 8px 0;
-      font-size: 18px;
-      font-weight: 600;
-    }
   }
 
   &__description {
-    margin: 8px 0;
-    font-size: 14px;
-    color: #666;
+    margin: space.$spacing-sm 0;
+    font-size: 0.875rem;
+    color: light-dark(color.$navigations-color-light, color.$version-color-dark);
     flex-grow: 1;
   }
 
   &__price {
-    margin: 12px 0;
-    font-size: 20px;
+    margin: space.$spacing-md 0;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #333;
+    color: color.$highlight-green-color;
   }
 
   &__actions {
     display: flex;
-    gap: 8px;
-    margin-top: 12px;
+    gap: space.$spacing-sm;
+    margin-top: space.$spacing-md;
   }
 
   &__quantity {
     width: 60px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: space.$spacing-xs space.$spacing-sm;
+    border: 1px solid light-dark(#ddd, #444);
+    border-radius: space.$radius-md;
+    background: light-dark(white, #2a2a2a);
+    color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+    font-size: 0.875rem;
+
+    &:focus {
+      outline: none;
+      border-color: color.$highlight-green-color;
+    }
   }
 }
 
 .btn--small {
   flex-grow: 1;
-  padding: 8px 12px;
-  font-size: 14px;
+  padding: space.$spacing-sm space.$spacing-md;
+  font-size: 0.875rem;
 }
+

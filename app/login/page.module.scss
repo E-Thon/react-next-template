@@ -1,0 +1,65 @@
+@use "../style/variables/color" as color;
+@use "../style/variables/spacing" as space;
+@use "../style/mixins/mixins" as mix;
+
+.login-container {
+  max-width: 400px;
+  margin: space.$spacing-3xl auto;
+  padding: space.$spacing-lg;
+  background: light-dark(#f9f9f9, #2a2a2a);
+  border-radius: space.$radius-md;
+  border: 1px solid light-dark(#e0e0e0, #333);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: space.$spacing-sm;
+
+    label {
+      font-weight: 600;
+    }
+
+    input {
+      @extend %input;
+    }
+  }
+
+  button {
+    @extend .btn;
+    @extend .btn--primary;
+    width: 100%;
+  }
+
+  &__footer {
+    text-align: center;
+    margin-top: space.$spacing-lg;
+    font-size: 0.875rem;
+
+    a {
+      color: color.$highlight-green-color;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: space.$spacing-md;
+  border-radius: space.$radius-md;
+  margin-bottom: space.$spacing-md;
+  border: 1px solid #f5c6cb;
+
+  @media (prefers-color-scheme: dark) {
+    background: #5f2f2f;
+    border-color: #8b6f7f;
+    color: #ffcdd2;
+  }
+}

@@ -1,16 +1,154 @@
 @use "./variables/color";
 @use "./variables/typography";
+@use "./variables/spacing";
+@use "./mixins/mixins";
 @use "./placeholders/base";
+@use "./placeholders/components";
+@use "./placeholders/buttons";
 @use "./placeholders/img";
 @use "./fonts/fonts";
 @use "./_search";
 @use "./_switch";
-@use "../_components/news/news";
-@use "../_components/header/header";
-@use "../_components/footer/footer";
+
+// Global Styles
+* {
+  @extend %base;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  @extend %base;
-  @extend %img;
-  margin: 0 auto;
+  background: light-dark(color.$bg-color-light, color.$bg-color-dark);
+  color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  line-height: 1.6;
+}
+
+// Container wrapper
+.wrapper {
+  @include mixins.container;
+  padding-top: spacing.$spacing-xl;
+  padding-bottom: spacing.$spacing-xl;
+}
+
+main {
+  min-height: calc(100vh - 200px);
+}
+
+// Global button styles
+.btn {
+  @extend %button;
+
+  &--primary {
+    background: color.$highlight-green-color;
+    color: white;
+
+    &:hover {
+      background: darken(color.$highlight-green-color, 10%);
+    }
+  }
+
+  &--secondary {
+    background: light-dark(#f0f0f0, #333);
+    color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+    border: 1px solid light-dark(#ddd, #555);
+
+    &:hover {
+      background: light-dark(#e0e0e0, #444);
+    }
+  }
+
+  &--small {
+    padding: spacing.$spacing-xs spacing.$spacing-sm;
+    font-size: 0.875rem;
+  }
+}
+
+// Global link styles
+a {
+  @extend %link;
+}
+
+// Form styles
+form {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$spacing-md;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: spacing.$spacing-xs;
+  display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+  @extend %input;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+// Grid for responsive products
+.products-grid,
+.featured-items {
+  @include mixins.responsive-grid;
+}
+
+// Back link
+.back-link {
+  display: inline-block;
+  margin-bottom: spacing.$spacing-lg;
+}
+
+// Messages
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: spacing.$spacing-md;
+  border-radius: spacing.$radius-md;
+  margin-bottom: spacing.$spacing-md;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: spacing.$spacing-md;
+  border-radius: spacing.$radius-md;
+  margin-bottom: spacing.$spacing-md;
+}
+
+// Empty states
+.empty-basket,
+.empty-favorites,
+.empty-orders {
+  text-align: center;
+  padding: spacing.$spacing-3xl spacing.$spacing-md;
+
+  p {
+    margin-bottom: spacing.$spacing-lg;
+  }
+}
+
+// Dark mode specific adjustments
+@media (prefers-color-scheme: dark) {
+  .success-message {
+    background: #1f4d2f;
+    color: #a8e6c1;
+  }
+
+  .error-message {
+    background: #5f2f2f;
+    color: #ffcdd2;
+  }
 }

@@ -1,0 +1,54 @@
+@use "../style/variables/color" as color;
+@use "../style/variables/spacing" as space;
+@use "../style/mixins/mixins" as mix;
+
+.contact-form {
+  max-width: 600px;
+  margin: space.$spacing-xl auto;
+  padding: space.$spacing-lg;
+  background: light-dark(#f9f9f9, #2a2a2a);
+  border-radius: space.$radius-md;
+  border: 1px solid light-dark(#e0e0e0, #333);
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: space.$spacing-sm;
+
+    label {
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      @extend %input;
+    }
+  }
+
+  button {
+    @extend .btn;
+    @extend .btn--primary;
+    width: 100%;
+    margin-top: space.$spacing-md;
+  }
+}
+
+.contact__success {
+  text-align: center;
+  padding: space.$spacing-2xl space.$spacing-lg;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: space.$radius-md;
+  color: #155724;
+
+  p {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: #1f4d2f;
+    border-color: #2d7a3f;
+    color: #a8e6c1;
+  }
+}

@@ -1,0 +1,44 @@
+@use "../../style/variables/color" as color;
+@use "../../style/variables/spacing" as space;
+@use "../../style/mixins/mixins" as mix;
+
+.searchfield {
+  @include mix.flex-center;
+  gap: space.$spacing-sm;
+  background: light-dark(color.$searchfield-color-light, #2a2a2a);
+  border: 1px solid light-dark(#ddd, #444);
+  border-radius: space.$radius-md;
+  padding: space.$spacing-xs space.$spacing-md;
+  width: 100%;
+  max-width: 300px;
+
+  &__input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: light-dark(color.$text-color-light, color.$fonts-color-dark);
+    padding: 0;
+    font-size: 0.875rem;
+
+    &::placeholder {
+      color: light-dark(#999, #888);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__button {
+    @include mix.button-reset;
+    padding: space.$spacing-xs space.$spacing-sm;
+    color: color.$highlight-green-color;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 150ms ease-in-out;
+
+    &:hover {
+      color: darken(color.$highlight-green-color, 10%);
+    }
+  }
+}
