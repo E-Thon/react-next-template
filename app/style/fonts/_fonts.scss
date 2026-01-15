@@ -1,0 +1,64 @@
+@use "../variables/color" as var;
+@use "../variables/typography" as typo;
+
+// Font families
+body {
+  font-family: var(--font-open-sans), sans-serif;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-playfair-display), serif;
+  font-style: normal;
+}
+
+// Headings
+h1 {
+  font-size: typo.$h1-size;
+  font-weight: typo.$h1-weight;
+  color: light-dark(var(--navs-l), var(--fonts-d));
+}
+
+h2 {
+  font-size: typo.$h2-size;
+  font-weight: typo.$h2-weight;
+  text-transform: uppercase;
+  color: light-dark(var(--navs-l), var(--fonts-d));
+}
+
+h3 {
+  font-size: typo.$h3-size;
+  font-weight: typo.$h3-weight;
+  color: light-dark(var(--text-l), var(--fonts-d));
+}
+
+// Body text
+p {
+  font-size: typo.$p-size;
+  font-weight: typo.$p-weight;
+  color: light-dark(var(--text-l), var(--fonts-d));
+}
+
+a {
+  font-size: typo.$link-size;
+  font-weight: typo.$link-weight;
+}
+
+// Buttons
+.btn1,
+.btn2 {
+  font-size: typo.$btn-size;
+  font-weight: typo.$btn-weight;
+}
+
+.btn3 {
+  font-size: typo.$btn3-size;
+  font-weight: typo.$btn-weight;
+}
+
+#search {
+  font-weight: typo.$p-weight;
+}

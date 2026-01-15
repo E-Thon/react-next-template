@@ -1,0 +1,16 @@
+@use "./variables/color";
+@use "./variables/typography";
+@use "./placeholders/base";
+@use "./placeholders/img";
+@use "./fonts/fonts";
+@use "./_search";
+@use "./_switch";
+@use "../_components/news/news";
+@use "../_components/header/header";
+@use "../_components/footer/footer";
+
+body {
+  @extend %base;
+  @extend %img;
+  margin: 0 auto;
+}

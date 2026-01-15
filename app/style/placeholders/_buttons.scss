@@ -1,0 +1,36 @@
+@use "../variables/color" as var;
+
+%button1 {
+    width: 100%;
+    height: fit-content;
+    padding-top: 1.125rem;
+    padding-bottom: 1.125rem;
+    border-radius: 40px;
+    border: 1px solid var(--boxborder);
+    text-decoration: none;
+    color: light-dark(var(--text-l), var(--fonts-d));
+    text-align: center;
+}
+%button2 {
+    width: 100%;
+    height: fit-content;
+    padding-top: 1.125rem;
+    padding-bottom: 1.125rem;
+    border-radius: 40px;
+    border: 1px solid var(--highlight);
+    box-shadow:  0 4px 8px 0 var(--highlight);
+    background:var(--highlight);
+    color: var(--bg-l);
+    text-decoration: none;
+    text-align: center;
+}
+%button3 {
+    width: 90%;
+    height: fit-content;
+    padding-top: 1.125rem;
+    padding-bottom: 1.125rem;
+    border-radius: 40px;
+    border: 1px solid var(--highlight);
+    text-decoration: none;
+    color: var(--highlight);
+}

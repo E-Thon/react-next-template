@@ -1,0 +1,16 @@
+@use "./variables/color" as var;
+
+.search {
+  width: 90%;
+  margin: 0 auto 2rem;
+  display: block;
+
+  input {
+    width: 100%;
+    color: var(--searchtext);
+    background-color: light-dark(var(--searchfield-l), var(--searchfield-d));
+    padding: 1rem;
+    border-radius: 4px;
+    border: none;
+  }
+}

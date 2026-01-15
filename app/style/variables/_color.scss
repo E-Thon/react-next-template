@@ -1,0 +1,57 @@
+// Color definitions - Primary
+$boxborder-color: #c5c5c5;
+$highlight-green-color: #4d861f;
+$archive-color: #46781b;
+$searchtext-color: rgb(34, 34, 34, 0.4);
+
+// Light mode
+$bg-color-light: #ffffff;
+$navigations-color-light: #404040;
+$text-color-light: #222222;
+$searchfield-color-light: rgb(217, 217, 217, 0.3);
+$version-color-light: #d9d9d9;
+
+// Dark mode
+$bg-color-dark: #1f1f1f;
+$fonts-color-dark: #d9d9d9;
+$searchfield-color-dark: #d9d9d9;
+$version-color-dark: #a5a5a5;
+
+// CSS custom properties
+:root {
+  color-scheme: light dark;
+  
+  // Primary
+  --boxborder: #{$boxborder-color};
+  --highlight: #{$highlight-green-color};
+  --archive: #{$archive-color};
+  --searchtext: #{$searchtext-color};
+
+  // Light mode
+  --bg-l: #{$bg-color-light};
+  --navs-l: #{$navigations-color-light};
+  --text-l: #{$text-color-light};
+  --searchfield-l: #{$searchfield-color-light};
+  --version-l: #{$version-color-light};
+
+  // Dark mode
+  --bg-d: #{$bg-color-dark};
+  --fonts-d: #{$fonts-color-dark};
+  --searchfield-d: #{$searchfield-color-dark};
+  --version-d: #{$version-color-dark};
+}
+
+// Data attribute for dark mode
+[data-dark="true"] {
+  color-scheme: dark;
+}
+
+[data-dark="false"] {
+  color-scheme: light;
+}
+
+
+/* COLORING */
+#app{
+  background-color: light-dark(var(--bg-l), var(--bg-d));
+}
